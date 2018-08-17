@@ -5,10 +5,10 @@ try:
 except ImportError:
     from distutils.core import setup
 
-with open('README.md', 'rb') as f:
+with open('README.rst', 'rb') as f:
     readme = f.read().decode('utf-8')
 
-setup(name='dealtape-python-sdk',
+setup(name='dealtape',
       version="0.0.1",
       description='DealTape SDK for Python',
       long_description=readme,

@@ -13,13 +13,13 @@ DealTape数据推送SDK
 
 .. code-block:: bash
     
-    $pip install dealtape
+    $ pip install dealtape
 
 也可以直接安装解压后的安装包
 
 .. code-block:: bash
 
-    sudo python setup.py install
+    $ sudo python setup.py install
 
 
 快速使用
