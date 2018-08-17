@@ -31,7 +31,6 @@ DealTape数据推送SDK
 
     # -*- coding: utf-8 -*-
     from dealtape import CallLog, DealTapeClient
-    from datetime import datetime
 
     business = 'YOUR_BUSINESS_KEY' # 企业的唯一标识，即在企业DealTape系统中的二级域名
 
