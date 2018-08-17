@@ -5,26 +5,16 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = ''
-
-version = ''
-with open('__init__.py', 'r') as fd:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
-                        fd.read(), re.MULTILINE).group(1)
-
-if not version:
-    raise RuntimeError('Cannot find version information')
-
-with open('README.rst', 'rb') as f:
+with open('README.md', 'rb') as f:
     readme = f.read().decode('utf-8')
 
 setup(name='dealtape-python-sdk',
-      version=version,
+      version="0.0.1",
       description='DealTape SDK for Python',
       long_description=readme,
       author='Yutao Zhang',
       author_email='yutao@recurrent.ai',
-      packages=['dealtape-python-sdk'],
+      packages=['dealtape'],
       license='MIT',
       platforms=['any'],
       install_requires=['requests!=2.9.0',],
