@@ -9,7 +9,7 @@ with open('README.rst', 'rb') as f:
     readme = f.read().decode('utf-8')
 
 setup(name='dealtape',
-      version="0.0.2",
+      version="0.0.4",
       description='DealTape SDK for Python',
       long_description=readme,
       author='Yutao Zhang',

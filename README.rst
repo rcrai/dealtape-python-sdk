@@ -38,9 +38,9 @@ DealTape数据推送SDK
 
     item = CallLog(
         url="CALLLOG_AUDIO_URL", # 电话录音的url
-        id="CALLLOG_UNIQUE_IDENTIFIER", # 电话在客户内部系统中的唯一标示
-        staff_id="STAFF_ID", # 该电话坐席的唯一标示
-        customer_id="CUSTOMER_ID", # 客户的唯一标示
+        id="CALLLOG_UNIQUE_IDENTIFIER", # 电话在客户内部系统中的唯一标识
+        staff_id="STAFF_ID", # 该电话坐席的唯一标识
+        customer_id="CUSTOMER_ID", # 客户的唯一标识
         deal_closed=True/False, # 该电话是否成单
         timestamp=TIMESTAMP # 电话的拨打时间（datetime.datetime类型, 或是int类型的unix时间戳）
     )
