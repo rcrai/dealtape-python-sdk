@@ -78,6 +78,7 @@ DealTape数据SDK
         print(resp.text)
 
 .. code-block:: python
+
     # 成功返回结果
     {
         "entities": [
