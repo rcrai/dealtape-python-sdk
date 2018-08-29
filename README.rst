@@ -15,7 +15,7 @@ DealTape数据SDK
 
 .. code-block:: bash
     
-    $ pip install dealtape
+    $ pip install -U dealtape
 
 也可以直接安装解压后的安装包
 
