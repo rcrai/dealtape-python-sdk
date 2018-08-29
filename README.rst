@@ -5,7 +5,7 @@ Recurrent.ai DealTape SDK for Python
 概述
 --------
 
-DealTape数据推送SDK
+DealTape数据SDK
 
 
 安装方式
@@ -25,8 +25,7 @@ DealTape数据推送SDK
 
 
 快速使用
---------
-
+-------
 .. code-block:: python
 
     # -*- coding: utf-8 -*-
@@ -36,6 +35,13 @@ DealTape数据推送SDK
 
     client = DealTapeClient(business=business)
 
+
+
+数据推送
+--------
+.. code-block:: python
+
+    # -*- coding: utf-8 -*-
     item = CallLog(
         url="CALLLOG_AUDIO_URL", # 电话录音的url
         id="CALLLOG_UNIQUE_IDENTIFIER", # 电话在客户内部系统中的唯一标识
@@ -47,5 +53,15 @@ DealTape数据推送SDK
         timestamp=TIMESTAMP # 电话的拨打时间（datetime.datetime类型, 或是int类型的unix时间戳）
     )
     resp = client.push_calllog(item)
+    if not resp.ok:
+        print(resp.text)
+
+
+语音识别结果获取
+-------------
+
+.. code-block:: python
+
+    resp = client.get_transcript(source_id=CALLLOG_UNIQUE_IDENTIFIER) # 电话在客户内部系统中的唯一标识
     if not resp.ok:
         print(resp.text)

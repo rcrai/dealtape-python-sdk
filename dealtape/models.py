@@ -2,7 +2,7 @@ from datetime import datetime
 
 class CallLog(object):
 
-    def __init__(self, url, id, timestamp, staff_id, staff_name=None, customer_id=None, customer_name=None, deal_closed=None):
+    def __init__(self, url, id, timestamp, staff_id, staff_name=None, customer_id=None, customer_name=None, title=None,  deal_closed=None):
         self.url = url
         self.id = id
         self.timestamp = timestamp
@@ -11,6 +11,7 @@ class CallLog(object):
         self.customer_id = customer_id
         self.customer_name = customer_name
         self.deal_closed = deal_closed
+        self.title = title
 
     def to_dict(self):
         timestamp = self.timestamp
@@ -22,6 +23,7 @@ class CallLog(object):
             print("Invalid timestamp")
             return None
         return {
+            "title": self.title,
             "url": self.url,
             "unique_id": str(self.id),
             "timestamp": timestamp,
