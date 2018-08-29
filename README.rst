@@ -41,7 +41,6 @@ DealTape数据SDK
 --------
 .. code-block:: python
 
-    # -*- coding: utf-8 -*-
     item = CallLog(
         url="CALLLOG_AUDIO_URL", # 电话录音的url
         id="CALLLOG_UNIQUE_IDENTIFIER", # 电话在客户内部系统中的唯一标识
