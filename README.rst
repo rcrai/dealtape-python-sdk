@@ -32,8 +32,10 @@ DealTape数据SDK
     from dealtape import CallLog, DealTapeClient
 
     business = 'YOUR_BUSINESS_KEY' # 企业的唯一标识，即在企业DealTape系统中的二级域名
+    access_key_id = 'YOUR_ACCESS_KEY_ID' # 企业的AccessKeyId
+    access_key_secret = 'YOUR_ACCESS_KEY_SECRET' # 企业的AccessKeySecret
 
-    client = DealTapeClient(business=business)
+    client = DealTapeClient(business=business, access_key_id=access_key_id, access_key_secret=access_key_secret)
 
 
 
@@ -62,5 +64,15 @@ DealTape数据SDK
 .. code-block:: python
 
     resp = client.get_transcript(source_id=CALLLOG_UNIQUE_IDENTIFIER) # 电话在客户内部系统中的唯一标识
+    if not resp.ok:
+        print(resp.text)
+
+
+语义画像获取
+-------------
+
+.. code-block:: python
+
+    resp = client.get_semantic(source_id=CALLLOG_UNIQUE_IDENTIFIER) # 电话在客户内部系统中的唯一标识
     if not resp.ok:
         print(resp.text)
