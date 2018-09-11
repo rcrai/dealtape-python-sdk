@@ -6,6 +6,7 @@ Recurrent.ai DealTape REST API
 
 
 POST请求(json)
+
 http://data_server.rcrai.com/{business_key}/call/
 
 
@@ -35,10 +36,20 @@ http://data_server.rcrai.com/{business_key}/call/
     }
 
 
+语音识别结果获取
+-------------
+
+GET请求
+
+http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
+
+
+
 语义画像获取
 -----------
 
 POST请求(json)
+
 http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
 
 .. code-block:: python
