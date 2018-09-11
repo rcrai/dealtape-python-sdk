@@ -44,6 +44,72 @@ GET请求
 http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
 
 
+.. code-block:: python
+
+    # 成功返回结果
+    {
+        "task_id": "5b8cde9cd300ca000141013b",
+        "results": [
+            {
+                "begin_time": 0,
+                "end_time": 4840,
+                "text": "喂，你好，我想问一下。",
+                "channel_id": 0
+            },
+            {
+                "begin_time": 4740,
+                "end_time": 7750,
+                "text": "你这个你这边再和他联系吗？",
+                "channel_id": 0
+            },
+            {
+                "begin_time": 7650,
+                "end_time": 13620,
+                "text": "没有了，有多久没跟他联系了，我说我",
+                "channel_id": 0
+            },
+            {
+                "begin_time": 13520,
+                "end_time": 20620,
+                "text": "我一再别给我打电话，我也不认识啊，我，我不好意思，我这边第一次给你打电话，也是了解了解的话，",
+                "channel_id": 1
+            },
+            {
+                "begin_time": 20520,
+                "end_time": 35869,
+                "text": "嗯，你好，就是这个，我们跟他明天写过了，你给我打电话，你跟他这边留了你的电话的，然后等一下我们的一个公司打的话都下我。",
+                "channel_id": 1
+            },
+            {
+                "begin_time": 35769,
+                "end_time": 37640,
+                "text": "不联系，第一次还钱了。",
+                "channel_id": 0
+            },
+            {
+                "begin_time": 37540,
+                "end_time": 39009,
+                "text": "嗯",
+                "channel_id": 0
+            },
+            {
+                "begin_time": 38909,
+                "end_time": 56791,
+                "text": "嗯，我想问一下，你跟他不熟，就是也没联系过了是吧？嗯嗯打扰了，啊就是一点那打扰了，",
+                "channel_id": 0
+            }
+        ]
+    }
+
+
+.. code-block:: python
+
+    # 识别未完成
+    {
+        "task_id": "5b8cdee3d300ca0001410146",
+        "progress": "PENDING"
+    }   
+
 
 语义画像获取
 -----------
