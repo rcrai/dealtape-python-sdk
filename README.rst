@@ -49,7 +49,7 @@ DealTape数据SDK
         staff_id="STAFF_ID", # 该电话坐席的唯一标识
         staff_name="STAFF_NAME", # 该电话坐席名称
         customer_id="CUSTOMER_ID", # 客户的唯一标识
-        customer_id="CUSTOMER_NAME", # 客户的名称
+        customer_name="CUSTOMER_NAME", # 客户的名称
         deal_closed=True/False/None, # 该电话是否成单
         timestamp=TIMESTAMP # 电话的拨打时间（datetime.datetime类型, 或是int类型的unix时间戳）
     )
