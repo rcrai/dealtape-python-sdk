@@ -16,6 +16,7 @@ http://data_server.rcrai.com/{business_key}/call/
         "unique_id": "133333333",  // 电话在客户内部系统中的唯一标识
         "url":"http://voice-2.cticloud.cn/05062017/record/7000001/7000001-20170605192458-15302529829-02145994742--record-sip-1-1496661898.303292.mp3", // 电话录音的url
         "timestamp":1484640092, 电话的拨打时间(UNIX时间戳，中国时间)
+        "category": "银行业务", // 电话录音类型
         "staff":{
             "name":"张三", // 该电话坐席名称
             "roles":[
@@ -28,6 +29,9 @@ http://data_server.rcrai.com/{business_key}/call/
                 "id": "1206" // 团队唯一标识
             }
         },
+        "group": {
+           "name": "", // 大组名称
+        }
         "customer":{
             "id": "1345" // 客户的唯一标识
             "phone":"xxxxxxx5229",  // 客户电话号码
