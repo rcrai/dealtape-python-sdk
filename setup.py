@@ -17,7 +17,7 @@ setup(name='dealtape',
       packages=['dealtape'],
       license='MIT',
       platforms=['any'],
-      install_requires=['requests!=2.9.0',],
+      install_requires=['requests>=2.20.0',],
       url='https://github.com/rcrai/dealtape-python-sdk'
 )
 
