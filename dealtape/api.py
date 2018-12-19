@@ -10,6 +10,8 @@ class DealTapeClient(object):
     def __init__(self, business, access_key_id="", access_key_secret="", endpoint=None):
         if not endpoint:
             self.endpoint = DEFUALT_ENDPOINT
+        else:
+            self.endpoint = endpoint.strip("/") + "/"
         self.business = business
         self.access_key_id = access_key_id
         self.access_key_secret = access_key_secret
