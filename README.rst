@@ -34,8 +34,9 @@ DealTape数据SDK
     business = 'YOUR_BUSINESS_KEY' # 企业的唯一标识，即在企业DealTape系统中的二级域名
     access_key_id = 'YOUR_ACCESS_KEY_ID' # 企业的AccessKeyId
     access_key_secret = 'YOUR_ACCESS_KEY_SECRET' # 企业的AccessKeySecret
+    endpoint = 'http://data_server.rcrai.com/' # api地址
 
-    client = DealTapeClient(business=business, access_key_id=access_key_id, access_key_secret=access_key_secret)
+    client = DealTapeClient(business=business, access_key_id=access_key_id, access_key_secret=access_key_secret, endpoint=endpoint)
 
 
 
