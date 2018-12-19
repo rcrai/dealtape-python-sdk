@@ -27,11 +27,11 @@ http://data_server.rcrai.com/{business_key}/call/
             "dept":{
                 "name":"特攻一部c组", // 团队名字
                 "id": "1206" // 团队唯一标识
+            },
+            "group": {
+                "name": "", // 大组名称
             }
         },
-        "group": {
-           "name": "", // 大组名称
-        }
         "customer":{
             "id": "1345" // 客户的唯一标识
             "phone":"xxxxxxx5229",  // 客户电话号码
