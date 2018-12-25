@@ -111,7 +111,7 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
         "task_id": "5b8cde9cd300ca000141013b",
         "results": [
             {
-                "begin_time": 0, // 句子开始时间
+                "begin_time": 0, // 句子开始时间
                 "end_time": 4840, // 句子结束时间
                 "text": "喂，你好，我想问一下。", // 句子文本内容
                 "channel_id": 0   // channel id 0为坐席，1为客户
