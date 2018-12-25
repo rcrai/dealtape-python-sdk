@@ -114,7 +114,7 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
                 "begin_time": 0,
                 "end_time": 4840,
                 "text": "喂，你好，我想问一下。",
-                "channel_id": 0
+                "channel_id": 0   // channel id 0为坐席，1为客户
             },
             {
                 "begin_time": 4740,
