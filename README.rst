@@ -86,8 +86,13 @@ DealTape数据SDK
         
     # 返回值
     {
-        "status": "OK"
-    }
+	    "failed_unique_ids": [],  # 失败的unique_id列表
+	    "status": "OK",
+	    "success_unique_ids": [  # 成功的unique_id列表
+	        "42221378094341301536649453",
+	        "42221378094263871536647253"
+	    ]
+	}
 
 
 语音识别结果获取
@@ -104,10 +109,10 @@ DealTape数据SDK
         "source_id": "5b8cde9cd300ca000141013b",
         "results": [
             {
-                "begin_time": 0,
-                "end_time": 4840,
-                "text": "喂，你好，我想问一下。",
-                "channel_id": 0
+                "begin_time": 0, // 句子开始时间
+                "end_time": 4840, // 句子结束时间
+                "text": "喂，你好，我想问一下。", // 句子文本内容
+                "channel_id": 0   // channel id 0为坐席，1为客户
             },
             {
                 "begin_time": 4740,
@@ -117,6 +122,7 @@ DealTape数据SDK
             },
             ...
         ]
+        "status": "SUCCESS"
     }
 
     # 批量获取
