@@ -1,7 +1,7 @@
 Recurrent.ai DealTape REST API
 ====================================
 
-数据推送:
+单条数据推送:
 -------
 
 
@@ -39,8 +39,64 @@ http://data_server.rcrai.com/{business_key}/call/
         }
     }
 
+批量数据推送:
+-------
 
-语音识别结果获取
+
+POST请求(json)
+
+http://data_server.rcrai.com/{business_key}/call/batch
+
+
+.. code-block:: python
+
+    {
+		"calls": [
+			{
+			    "unique_id": "133333333",  // 电话在客户内部系统中的唯一标识
+			    "url":"http://voice-2.cticloud.cn/05062017/record/7000001/7000001-20170605192458-15302529829-02145994742--record-sip-1-1496661898.303292.mp3", // 电话录音的url
+			    "timestamp":1484640092, 电话的拨打时间(UNIX时间戳，中国时间)
+			    "category": "银行业务", // 电话录音类型
+			    "staff":{
+			        "name":"张三", // 该电话坐席名称
+			        "roles":[
+			            "销售", // 该电话坐席的角色
+			            "主管"
+			        ],
+			        "id": "9999999", // 该电话坐席的唯一标识
+			        "dept":{
+			            "name":"特攻一部c组", // 团队名字
+			            "id": "1206" // 团队唯一标识
+			        },
+			        "group": {
+			            "name": "", // 大组名称
+			        }
+			    },
+			    "customer":{
+			        "id": "1345" // 客户的唯一标识
+			        "phone":"xxxxxxx5229",  // 客户电话号码
+			        "name":"李四",  // 客户的名称
+			    }
+			},
+			{
+				"unique_id": "xxxx",
+				"url":"https://account.zichan360.com/voice/record/20180911/33_zc360-zz_01012345678_15595178367_20180911142754_1536647274105.wav",
+				"timestamp":1536647255,
+				"staff":{
+				    "name":"申xxx",
+				    "roles":["催收员"],
+				    "id":"31409"
+				},
+				"customer":{
+				    "id": "xxxx",
+				    "phone":"110",
+				    "name":"李xxx"
+				}
+			}
+		]
+	}
+
+单条语音识别结果获取
 -------------
 
 GET请求
@@ -114,8 +170,42 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
         "progress": "PENDING"
     }   
 
+批量语音识别结果获取
+-------------
 
-语义画像获取
+GET请求
+
+http://data_server.rcrai.com/{business_key}/transcript
+
+.. code-block:: python
+
+    # 参数（json):
+    {
+	    "source_ids": ["id1", "id2"]
+    }
+
+
+.. code-block:: python
+
+    # 成功返回结果
+    {
+	    "results": [
+	        {
+	            "begin_time": 0,
+	            "channel_id": 0,
+	            "end_time": 11950,
+	            "speaker_type": "s",
+	            "status": "SUCCESS",
+	            "task_id": "xxxxx",
+	            "text": "喂，喂，你好，我说你儿子xxx到底还不还钱啊？"
+	        },
+	        ...
+	    ],
+	    "success": true
+	}
+
+
+单条语义画像获取
 -----------
 
 POST请求(json)
@@ -135,10 +225,10 @@ http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
     {
         "entities": [
             {
-                "id": "5b73e94935842e0b838ad318",
-                "bid": "599d1ff844ff53119a13e545",
+                "id": "xxx",
+                "bid": "xxx",
                 "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
+                "cid": "xxx",
                 "uniqueId": "",
                 "name": "身份确认",
                 "value": "身份确认", // 语义点
@@ -148,10 +238,10 @@ http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
                 "score": 0
             },
             {
-                "id": "5b73e94935842e0b838ad319",
-                "bid": "599d1ff844ff53119a13e545",
+                "id": "xxx",
+                "bid": "xxx",
                 "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
+                "cid": "xxx",
                 "uniqueId": "",
                 "name": "身份确认",
                 "value": "身份确认",
@@ -160,164 +250,59 @@ http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
                 "mediumEvidence": "",
                 "score": 0
             },
-            {
-                "id": "5b73e94935842e0b838ad31a",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "自我介绍",
-                "value": "自我介绍",
-                "evidence": "？你是怎么弄啊，我这块是捷信法务部的，捷信委托的法",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad31c",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "描述借款信息",
-                "value": "描述借款信息",
-                "evidence": "，你这块是是已经逾期了120天一千的，然后你直",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad31d",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "描述借款信息",
-                "value": "描述借款信息",
-                "evidence": "上的话，你看已经逾期81天了，并不是说一两",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad31f",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "协商转告",
-                "value": "协商转告",
-                "evidence": "我一下吗？我电话联系他本人好吗，我加下你的",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad320",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "协商转告",
-                "value": "协商转告",
-                "evidence": "是我们的，还需要联系上他本人，这一块的话，大",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad321",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "协商转告",
-                "value": "协商转告",
-                "evidence": "嗯，那你这个不能联系到本人把他本人号码给我",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad32d",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "协商还款",
-                "value": "协商还款",
-                "evidence": "你直说不还了，是什么时候还呢，这个这个这个",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad32f",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "协商还款",
-                "value": "协商还款",
-                "evidence": "快的明天这个6点之前处理一下这个款了，如",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad330",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "法律施压",
-                "value": "法律施压",
-                "evidence": "我们可能会涉及到法律问题 期，也就是说在",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad333",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "信用施压",
-                "value": "信用施压",
-                "evidence": "话，涉及到以后的征信 征信问题，他跟",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad334",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "生活限制",
-                "value": "生活限制",
-                "evidence": "个信用卡问题或者上学问题 包括在往后延伸",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "5b73e94935842e0b838ad335",
-                "bid": "599d1ff844ff53119a13e545",
-                "sid": "",
-                "cid": "5aefccf02aa1d4001331fdc5",
-                "uniqueId": "",
-                "name": "确认还款",
-                "value": "确认还款",
-                "evidence": "再给你打电话，4点多给我打电话，到时 嗯，这样子，我",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            }
+            ...
         ],
         "success": true // 成功
     }
+
+批量语义画像获取
+-----------
+
+POST请求(json)
+
+http://data_server.rcrai.com/{business_key}/semantic
+
+.. code-block:: python
+
+    # 参数(json格式):
+    {
+        "key": "{access_key_id}", 
+        "secret":"{access_key_secret}", 
+        "source_ids": ["id1", "id2"]
+    }
+
+.. code-block:: python
+
+    # 返回值:
+    {
+    "data": {
+        "id1": {
+            "entities": [],
+            "status": "SUCCESS"
+        },
+        "id2": {
+            "entities": [
+                {
+                    "briefEvidence": "逾期了几天",
+                    "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
+                    "mediumEvidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
+                    "name": "描述借款信息",
+                    "score": 10,
+                    "value": "描述借款信息"
+                },
+                {
+                    "briefEvidence": "什么时候还",
+                    "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
+                    "mediumEvidence": "只又可去分天准为什么时候还呀啊你是那个话头",
+                    "name": "协商还款",
+                    "score": 35,
+                    "value": "协商还款"
+                }
+            ],
+            "status": "SUCCESS"
+        }
+    },
+    "success": true
+}
 
 
