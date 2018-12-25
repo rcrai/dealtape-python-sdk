@@ -108,7 +108,7 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
 
     # 成功返回结果
     {
-        "task_id": "5b8cde9cd300ca000141013b",
+        "source_id": "5b8cde9cd300ca000141013b",
         "results": [
             {
                 "begin_time": 0,
@@ -122,42 +122,7 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
                 "text": "你这个你这边再和他联系吗？",
                 "channel_id": 0
             },
-            {
-                "begin_time": 7650,
-                "end_time": 13620,
-                "text": "没有了，有多久没跟他联系了，我说我",
-                "channel_id": 0
-            },
-            {
-                "begin_time": 13520,
-                "end_time": 20620,
-                "text": "我一再别给我打电话，我也不认识啊，我，我不好意思，我这边第一次给你打电话，也是了解了解的话，",
-                "channel_id": 1
-            },
-            {
-                "begin_time": 20520,
-                "end_time": 35869,
-                "text": "嗯，你好，就是这个，我们跟他明天写过了，你给我打电话，你跟他这边留了你的电话的，然后等一下我们的一个公司打的话都下我。",
-                "channel_id": 1
-            },
-            {
-                "begin_time": 35769,
-                "end_time": 37640,
-                "text": "不联系，第一次还钱了。",
-                "channel_id": 0
-            },
-            {
-                "begin_time": 37540,
-                "end_time": 39009,
-                "text": "嗯",
-                "channel_id": 0
-            },
-            {
-                "begin_time": 38909,
-                "end_time": 56791,
-                "text": "嗯，我想问一下，你跟他不熟，就是也没联系过了是吧？嗯嗯打扰了，啊就是一点那打扰了，",
-                "channel_id": 0
-            }
+            ...
         ]
     }
 
@@ -190,16 +155,30 @@ http://data_server.rcrai.com/{business_key}/transcript
     # 成功返回结果
     {
 	    "results": [
-	        {
-	            "begin_time": 0,
-	            "channel_id": 0,
-	            "end_time": 11950,
-	            "speaker_type": "s",
-	            "status": "SUCCESS",
-	            "task_id": "xxxxx",
-	            "text": "喂，喂，你好，我说你儿子xxx到底还不还钱啊？"
-	        },
-	        ...
+	        [
+	            {
+	                "begin_time": 0,
+	                "channel_id": 0,
+	                "end_time": 11950,
+	                "source_id": "id1",  # 传入的id1
+	                "speaker_type": "s",
+	                "status": "SUCCESS",
+	                "text": "喂，喂，你好，我说你儿子李龙到底还不还钱啊？"
+	            },
+	            ...
+	        ],
+	        [
+	            {
+	                "begin_time": 0,
+	                "channel_id": 1,
+	                "end_time": 1340,
+	                "source_id": "id2",  # 传入的id2
+	                "speaker_type": "c",
+	                "status": "SUCCESS",
+	                "text": "喂你好"
+	            },
+	            ...
+	        ]
 	    ],
 	    "success": true
 	}
@@ -208,7 +187,7 @@ http://data_server.rcrai.com/{business_key}/transcript
 单条语义画像获取
 -----------
 
-POST请求(json)
+GET请求(json)
 
 http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
 
@@ -223,37 +202,32 @@ http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
 
     # 成功返回结果
     {
-        "entities": [
-            {
-                "id": "xxx",
-                "bid": "xxx",
-                "sid": "",
-                "cid": "xxx",
-                "uniqueId": "",
-                "name": "身份确认",
-                "value": "身份确认", // 语义点
-                "evidence": "嗯喂，你好，是是吗？喂你好， 你好，唉，你", // 语义点证据
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            {
-                "id": "xxx",
-                "bid": "xxx",
-                "sid": "",
-                "cid": "xxx",
-                "uniqueId": "",
-                "name": "身份确认",
-                "value": "身份确认",
-                "evidence": "话能嗯对，堂哥 您是他堂哥是吗？喂，嗯，那你这",
-                "briefEvidence": "",
-                "mediumEvidence": "",
-                "score": 0
-            },
-            ...
+        "results": [
+	        {
+	            "source_id": "id1",
+	            "entities": [
+			        {
+			            "brief_evidence": "逾期了几天",
+			            "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
+			            "medium_evidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
+			            "name": "描述借款信息",
+			            "score": 10,
+			            "value": "描述借款信息"
+			        },
+			        {
+			            "brief_evidence": "什么时候还",
+			            "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
+			            "medium_evidence": "只又可去分天准为什么时候还呀啊你是那个话头",
+			            "name": "协商还款",
+			            "score": 35,
+			            "value": "协商还款"
+			        }
+			    ],
+			    "status": "SUCCESS",
+			 },
         ],
-        "success": true // 成功
-    }
+	    "success": true
+	}
 
 批量语义画像获取
 -----------
@@ -275,34 +249,36 @@ http://data_server.rcrai.com/{business_key}/semantic
 
     # 返回值:
     {
-    "data": {
-        "id1": {
-            "entities": [],
-            "status": "SUCCESS"
-        },
-        "id2": {
-            "entities": [
-                {
-                    "briefEvidence": "逾期了几天",
-                    "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
-                    "mediumEvidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
-                    "name": "描述借款信息",
-                    "score": 10,
-                    "value": "描述借款信息"
-                },
-                {
-                    "briefEvidence": "什么时候还",
-                    "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
-                    "mediumEvidence": "只又可去分天准为什么时候还呀啊你是那个话头",
-                    "name": "协商还款",
-                    "score": 35,
-                    "value": "协商还款"
-                }
-            ],
-            "status": "SUCCESS"
-        }
-    },
-    "success": true
-}
+	    "results": [
+	        {
+	            "entities": [],
+	            "source_id": "id1",
+	            "status": "SUCCESS"
+	        },
+	        {
+	            "entities": [
+	                {
+	                    "brief_evidence": "逾期了几天",
+	                    "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
+	                    "medium_evidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
+	                    "name": "描述借款信息",
+	                    "score": 10,
+	                    "value": "描述借款信息"
+	                },
+	                {
+	                    "brief_evidence": "什么时候还",
+	                    "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
+	                    "medium_evidence": "只又可去分天准为什么时候还呀啊你是那个话头",
+	                    "name": "协商还款",
+	                    "score": 35,
+	                    "value": "协商还款"
+	                }
+	            ],
+	            "source_id": "id2",
+	            "status": "SUCCESS"
+	        }
+	    ],
+	    "success": true
+	}
 
 

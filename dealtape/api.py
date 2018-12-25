@@ -32,7 +32,7 @@ class DealTapeClient(object):
         return resp
 
     def get_semantic(self, source_id):
-        resp = requests.post(self.endpoint + "%s/semantic/%s" % (self.business, source_id), json={
+        resp = requests.get(self.endpoint + "%s/semantic/%s" % (self.business, source_id), json={
             "key": self.access_key_id,
             "secret": self.access_key_secret
         })
