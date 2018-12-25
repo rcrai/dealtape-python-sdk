@@ -4,7 +4,7 @@ from datetime import datetime
 client = DealTapeClient(business="test", endpoint="http://localhost:8001/")
 item = CallLog(
     url="CALLLOG_AUDIO_URL", # 电话录音的url
-    id="CALLLOG_UNIQUE_IDENTIFIER", # 电话在客户内部系统中的唯一标识
+    id="CALLLOG_UNIQUE_IDENTIFIER1", # 电话在客户内部系统中的唯一标识
     staff_id="STAFF_ID", # 该电话坐席的唯一标识
     staff_name="STAFF_NAME", # 该电话坐席名称
     staff_roles=["ROLE1", "ROLE2"], # 该坐席的角色 
