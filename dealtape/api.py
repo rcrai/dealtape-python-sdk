@@ -5,7 +5,7 @@ DEFUALT_ENDPOINT = 'http://data_server.rcrai.com/'
 
 
 class DealTapeClient(object):
-
+    
     def __init__(self, business, access_key_id="", access_key_secret="", endpoint=None):
         if not endpoint:
             self.endpoint = DEFUALT_ENDPOINT

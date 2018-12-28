@@ -115,6 +115,7 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
                 "end_time": 4840, // 句子结束时间
                 "text": "喂，你好，我想问一下。", // 句子文本内容
                 "channel_id": 0   // channel id 0为坐席，1为客户
+                "speaker_type": "s", // speaker type s为坐席，c为客户
             },
            ...
         ],
@@ -180,6 +181,7 @@ http://data_server.rcrai.com/{business_key}/transcript
 	            "speaker_type": "s",
 	            "status": "SUCCESS",
 	            "task_id": "xxxxx",
+                "source_id": "",
 	            "text": "喂，喂，你好，我说你儿子xxx到底还不还钱啊？"
 	        },
 	        ...
@@ -208,11 +210,6 @@ http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
     {
         "entities": [
             {
-                "id": "xxx",
-                "bid": "xxx",
-                "sid": "",
-                "cid": "xxx",
-                "uniqueId": "",
                 "name": "身份确认",
                 "value": "身份确认", // 语义点
                 "evidence": "嗯喂，你好，是是吗？喂你好， 你好，唉，你", // 语义点证据
@@ -221,11 +218,6 @@ http://data_server.rcrai.com/{business_key}/semantic/{unique_id}
                 "score": 0
             },
             {
-                "id": "xxx",
-                "bid": "xxx",
-                "sid": "",
-                "cid": "xxx",
-                "uniqueId": "",
                 "name": "身份确认",
                 "value": "身份确认",
                 "evidence": "话能嗯对，堂哥 您是他堂哥是吗？喂，嗯，那你这",
@@ -251,7 +243,7 @@ http://data_server.rcrai.com/{business_key}/semantic
     {
         "key": "{access_key_id}", 
         "secret":"{access_key_secret}", 
-        "source_ids": ["id1", "id2"]
+        "source_ids": ["id1", "id2"]  // 客户传过来的unique_id
     }
 
 .. code-block:: python
@@ -259,8 +251,9 @@ http://data_server.rcrai.com/{business_key}/semantic
     # 返回值:
     {
     "data": {
-        "id1": {
+        "id1": {  // 与source_ids相对应
             "entities": [],
+            ”source_id": xxx
             "status": "SUCCESS"
         },
         "id2": {
