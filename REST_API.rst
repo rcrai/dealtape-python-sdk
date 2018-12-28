@@ -144,7 +144,7 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
 
     # 识别未完成
     {
-        "task_id": "5b8cdee3d300ca0001410146",
+        "source_id": "5b8cdee3d300ca0001410146",
         "status": "PENDING"
     }   
 
@@ -152,7 +152,7 @@ http://data_server.rcrai.com/{business_key}/transcript/{unique_id}
 
     # 识别出错
     {
-        "task_id": "5b8cdee3d300ca0001410146",
+        "source_id": "5b8cdee3d300ca0001410146",
         "status": "FAILED",
         "message": "音频文件下载失败", 
         "code": 20200
