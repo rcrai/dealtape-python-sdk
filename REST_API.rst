@@ -192,32 +192,47 @@ http://data_server.rcrai.com/{business_key}/transcript
     # 成功返回结果
     {
 	    "results": [
-	        [
-	            {
-	                "begin_time": 0,
-	                "channel_id": 0,
-	                "end_time": 11950,
-	                "source_id": "id1",  # 传入的id1
-	                "speaker_type": "s",
-	                "status": "SUCCESS",
-	                "text": "喂，喂，你好，我说你儿子李龙到底还不还钱啊？"
-	            },
-	            ...
-	        ],
-	        [
-	            {
-	                "begin_time": 0,
-	                "channel_id": 1,
-	                "end_time": 1340,
-	                "source_id": "id2",  # 传入的id2
-	                "speaker_type": "c",
-	                "status": "SUCCESS",
-	                "text": "喂你好"
-	            },
-	            ...
-	        ]
-	    ],
-	    "success": true
+            {
+                "source_id": "id1",
+                "segments": [
+                    {
+                        "begin_time": 0, // 句子开始时间
+                        "end_time": 4840, // 句子结束时间
+                        "text": "喂，你好，我想问一下。", // 句子文本内容
+                        "channel_id": 0   // channel id 0为坐席，1为客户
+                        "speaker_type": "s", // speaker type s为坐席，c为客户
+                    },
+                    {
+                        "begin_time": 4740,
+                        "end_time": 7750,
+                        "text": "你这个你这边再和他联系吗？",
+                        "channel_id": 0
+                    },
+                    ...
+                ]
+                "status": "SUCCESS"
+            },
+            {
+                "source_id": "id2",
+                "segments": [
+                    {
+                        "begin_time": 0, // 句子开始时间
+                        "end_time": 4840, // 句子结束时间
+                        "text": "喂，你好，我想问一下。", // 句子文本内容
+                        "channel_id": 0   // channel id 0为坐席，1为客户
+                        "speaker_type": "s", // speaker type s为坐席，c为客户
+                    },
+                    {
+                        "begin_time": 4740,
+                        "end_time": 7750,
+                        "text": "你这个你这边再和他联系吗？",
+                        "channel_id": 0
+                    },
+                    ...
+                ]
+                "status": "SUCCESS"
+            },
+        }
 	}
 
 
@@ -250,7 +265,7 @@ http://data_server.rcrai.com/{business_key}/semantic/{source_id}
             },
             ...
         ],
-	    "success": true
+	    "status": "SUCCESS"
 	}
 
 批量语义画像获取
@@ -301,7 +316,6 @@ http://data_server.rcrai.com/{business_key}/semantic
 	            "status": "SUCCESS"
 	        }
 	    ],
-	    "success": true
 	}
 
 
