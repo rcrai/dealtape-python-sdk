@@ -86,8 +86,13 @@ DealTape数据SDK
         
     # 返回值
     {
-        "status": "OK"
-    }
+	    "failed_unique_ids": [],  # 失败的unique_id列表
+	    "status": "OK",
+	    "success_unique_ids": [  # 成功的unique_id列表
+	        "42221378094341301536649453",
+	        "42221378094263871536647253"
+	    ]
+	}
 
 
 语音识别结果获取
@@ -101,18 +106,23 @@ DealTape数据SDK
         print(resp.text)
     # 返回值
     {
+        "source_id": "5b8cde9cd300ca000141013b",
         "results": [
-	        {
-	            "begin_time": 0,
-	            "channel_id": 0,
-	            "end_time": 11950,
-	            "speaker_type": "s",
-	            "text": "喂，喂，你好，我说你儿子xxx到底还不还钱啊？"
-	        },
-	        ...
-	     ]
-        "status": "SUCCESS",
-        "task_id": "xxxxxxx"
+            {
+                "begin_time": 0, // 句子开始时间
+                "end_time": 4840, // 句子结束时间
+                "text": "喂，你好，我想问一下。", // 句子文本内容
+                "channel_id": 0   // channel id 0为坐席，1为客户
+            },
+            {
+                "begin_time": 4740,
+                "end_time": 7750,
+                "text": "你这个你这边再和他联系吗？",
+                "channel_id": 0
+            },
+            ...
+        ]
+        "status": "SUCCESS"
     }
 
     # 批量获取
@@ -122,25 +132,30 @@ DealTape数据SDK
     # 返回值
     {
 	    "results": [
-	        {
-	            "begin_time": 0,
-	            "channel_id": 0,
-	            "end_time": 11950,
-	            "speaker_type": "s",
-	            "status": "SUCCESS",
-	            "task_id": "xxxxxxx",
-	            "text": "喂，喂，你好，我说你儿子xxx到底还不还钱啊？"
-	        },
-	        {
-	            "begin_time": 11850,
-	            "channel_id": 0,
-	            "end_time": 14180,
-	            "speaker_type": "s",
-	            "status": "SUCCESS",
-	            "task_id": "xxxxxxx",
-	            "text": "你直接判他判他刑吧"
-	        },
-	        ...
+	        [
+	            {
+	                "begin_time": 0,
+	                "channel_id": 0,
+	                "end_time": 11950,
+	                "source_id": "id1",  # 传入的id1
+	                "speaker_type": "s",
+	                "status": "SUCCESS",
+	                "text": "喂，喂，你好，我说你儿子李龙到底还不还钱啊？"
+	            },
+	            ...
+	        ],
+	        [
+	            {
+	                "begin_time": 0,
+	                "channel_id": 1,
+	                "end_time": 1340,
+	                "source_id": "id2",  # 传入的id2
+	                "speaker_type": "c",
+	                "status": "SUCCESS",
+	                "text": "喂你好"
+	            },
+	            ...
+	        ]
 	    ],
 	    "success": true
 	}
@@ -158,25 +173,30 @@ DealTape数据SDK
         print(resp.text)
     # 返回值
     {
-	    "entities": [
+        "results": [
 	        {
-	            "briefEvidence": "逾期了几天",
-	            "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
-	            "mediumEvidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
-	            "name": "描述借款信息",
-	            "score": 10,
-	            "value": "描述借款信息"
-	        },
-	        {
-	            "briefEvidence": "什么时候还",
-	            "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
-	            "mediumEvidence": "只又可去分天准为什么时候还呀啊你是那个话头",
-	            "name": "协商还款",
-	            "score": 35,
-	            "value": "协商还款"
-	        }
-	    ],
-	    "status": "SUCCESS",
+	            "source_id": "id1",
+	            "entities": [
+			        {
+			            "brief_evidence": "逾期了几天",
+			            "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
+			            "medium_evidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
+			            "name": "描述借款信息",
+			            "score": 10,
+			            "value": "描述借款信息"
+			        },
+			        {
+			            "brief_evidence": "什么时候还",
+			            "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
+			            "medium_evidence": "只又可去分天准为什么时候还呀啊你是那个话头",
+			            "name": "协商还款",
+			            "score": 35,
+			            "value": "协商还款"
+			        }
+			    ],
+			    "status": "SUCCESS",
+			 },
+        ],
 	    "success": true
 	}
 
@@ -186,32 +206,34 @@ DealTape数据SDK
         print(resp.text)
     # 返回值
     {
-	    "data": {
-	        "id1": {
+	    "results": [
+	        {
 	            "entities": [],
+	            "source_id": "id1",
 	            "status": "SUCCESS"
 	        },
-	        "id2": {
+	        {
 	            "entities": [
 	                {
-	                    "briefEvidence": "逾期了几天",
+	                    "brief_evidence": "逾期了几天",
 	                    "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
-	                    "mediumEvidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
+	                    "medium_evidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
 	                    "name": "描述借款信息",
 	                    "score": 10,
 	                    "value": "描述借款信息"
 	                },
 	                {
-	                    "briefEvidence": "什么时候还",
+	                    "brief_evidence": "什么时候还",
 	                    "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
-	                    "mediumEvidence": "只又可去分天准为什么时候还呀啊你是那个话头",
+	                    "medium_evidence": "只又可去分天准为什么时候还呀啊你是那个话头",
 	                    "name": "协商还款",
 	                    "score": 35,
 	                    "value": "协商还款"
 	                }
 	            ],
+	            "source_id": "id2",
 	            "status": "SUCCESS"
 	        }
-	    },
+	    ],
 	    "success": true
 	}
