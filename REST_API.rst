@@ -14,7 +14,7 @@ http://data_server.rcrai.com/{business_key}/call/
 
     {
         "source_id": "133333333",  // 电话在客户内部系统中的唯一标识
-        "url":"http://voice-2.cticloud.cn/05062017/record/7000001/7000001-20170605192458-15302529829-02145994742--record-sip-1-1496661898.303292.mp3", // 电话录音的url
+        "url":"http://xxxx.cn/xxxxxx.mp3", // 电话录音的url
         "timestamp":1484640092, 电话的拨打时间(UNIX时间戳，中国时间)
         "category": "银行业务", // 电话录音类型
         "staff":{
@@ -281,7 +281,7 @@ http://data_server.rcrai.com/{business_key}/semantic
 	            "entities": [
 	                {
 	                    "brief_evidence": "逾期了几天",
-	                    "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想办法再还没一点呢就是那慢慢的还进去了我是我...",
+	                    "evidence": "我现在跟你说我就我这几天我都逾期了几天呐我一直没联钱我会啊我我这两天我会想...",
 	                    "medium_evidence": "我就我这几天我都逾期了几天呐我一直没联钱我",
 	                    "name": "描述借款信息",
 	                    "score": 10,
@@ -289,7 +289,7 @@ http://data_server.rcrai.com/{business_key}/semantic
 	                },
 	                {
 	                    "brief_evidence": "什么时候还",
-	                    "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀啊你是那个话头慢客服不是我我跟他的房子现在我讲不的听吧还掉的啊还可以尽量就让...",
+	                    "evidence": "喂你好哎是在家是吧嗯这下啊分买了今天只又可去分天准为什么时候还呀...",
 	                    "medium_evidence": "只又可去分天准为什么时候还呀啊你是那个话头",
 	                    "name": "协商还款",
 	                    "score": 35,
