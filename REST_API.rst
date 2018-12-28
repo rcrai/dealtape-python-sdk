@@ -126,14 +126,15 @@ http://data_server.rcrai.com/{business_key}/transcript/{source_id}
                 "begin_time": 0, // 句子开始时间
                 "end_time": 4840, // 句子结束时间
                 "text": "喂，你好，我想问一下。", // 句子文本内容
-                "channel_id": 0   // channel id 0为坐席，1为客户
+                "channel_id": 0,  // channel id 0为坐席，1为客户
                 "speaker_type": "s", // speaker type s为坐席，c为客户
             },
             {
                 "begin_time": 4740,
                 "end_time": 7750,
                 "text": "你这个你这边再和他联系吗？",
-                "channel_id": 0
+                "channel_id": 0,
+                "speaker_type": "s",
             },
             ...
         ]
