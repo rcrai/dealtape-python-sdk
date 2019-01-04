@@ -245,24 +245,25 @@ DealTape数据SDK
 .. code-block:: python
 
     resp = client.create_dealinfo({
-	    # 客户ID, 不允许为空，string类型
-	    "customer_id": "xxx",
-	    # 成交产品名称, 不允许为空，string类型
-	    "product_name": "xxx",
-	    # 成交产品ID, 不允许为空，string类型
-	    "product_id": "xxx",
-	    # 成交时间, 不允许为空, string类型， 格式为"yyyy-mm-dd HH:MM:SS"或者”yyyy-mm-dd“
-	    "deal_time": "2019-01-01 09:01:01",
-	    # 到期时间, 不允许为空, string类型，格式同deal_time
-	    "expire_time": "2019-01-02",
-	    # 跟进销售工号, 不允许为空，string类型
-	    "staff_no": "123"
-	})
-	if not resp.ok:
+        # 客户ID, 不允许为空，string类型
+        "customer_id": "xxx",
+        # 成交产品名称, 不允许为空，string类型
+        "product_name": "xxx",
+        # 成交产品ID, 不允许为空，string类型
+        "product_id": "xxx",
+        # 成交时间, 不允许为空, string类型， 格式为"yyyy-mm-dd HH:MM:SS"或者”yyyy-mm-dd“
+        "deal_time": "2019-01-01 09:01:01",
+        # 到期时间, 不允许为空, string类型，格式同deal_time
+        "expire_time": "2019-01-02",
+        # 跟进销售工号, 不允许为空，string类型
+        "staff_no": "123"
+    })
+
+    if not resp.ok:
         print(resp.text)
-        
-	# 返回值
-	{
-	    "message": "ok",
-	    "success": true
-	}
+
+    # 返回值
+    {
+        "message": "ok",
+        "success": true
+    }
