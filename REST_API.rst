@@ -322,3 +322,35 @@ http://data_server.rcrai.com/{business_key}/semantic
 	}
 
 
+创建成交信息
+-----------
+
+POST请求(json)
+
+http://data_server.rcrai.com/{business_key}/dealinfo
+
+.. code-block:: python
+
+    # 参数(json):
+	{
+		// 客户ID, 不允许为空，string类型
+		"customer_id": "5c2db29cc3666e51b3aa7b1c",
+		// 成交产品名称, 不允许为空，string类型
+		"product_name": "xxx",
+		// 成交产品ID, 不允许为空，string类型
+		"product_id": "xxx",
+		// 成交时间, 不允许为空, string类型， 格式为"yyyy-mm-dd HH:MM:SS"或者”yyyy-mm-dd“
+		"deal_time": "2019-01-01 09:01:01",
+		// 到期时间, 不允许为空, string类型，格式同deal_time
+		"expire_time": "2019-01-02",
+		// 跟进销售工号, 不允许为空，string类型
+		"staff_no": "123"
+	}
+
+.. code-block:: python
+
+    # 返回值:
+    {
+	    "message": "ok",
+	    "success": true
+    }
