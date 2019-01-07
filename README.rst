@@ -86,9 +86,9 @@ DealTape数据SDK
         
     # 返回值
     {
-	    "failed_unique_ids": [],  # 失败的unique_id列表
+	    "failed_ids": [],  # 失败的unique_id列表
 	    "status": "OK",
-	    "success_unique_ids": [  # 成功的unique_id列表
+	    "succeed_ids": [  # 成功的unique_id列表
 	        "42221378094341301536649453",
 	        "42221378094263871536647253"
 	    ]
@@ -237,3 +237,33 @@ DealTape数据SDK
 	    ],
 	    "success": true
 	}
+
+
+创建交易信息
+-------------
+
+.. code-block:: python
+
+    resp = client.create_dealinfo({
+        # 客户ID, 不允许为空，string类型
+        "customer_id": "xxx",
+        # 成交产品名称, 不允许为空，string类型
+        "product_name": "xxx",
+        # 成交产品ID, 不允许为空，string类型
+        "product_id": "xxx",
+        # 成交时间, 不允许为空, string类型， 格式为"yyyy-mm-dd HH:MM:SS"或者”yyyy-mm-dd“
+        "deal_time": "2019-01-01 09:01:01",
+        # 到期时间, 不允许为空, string类型，格式同deal_time
+        "expire_time": "2019-01-02",
+        # 跟进销售工号, 不允许为空，string类型
+        "staff_no": "123"
+    })
+
+    if not resp.ok:
+        print(resp.text)
+
+    # 返回值
+    {
+        "message": "ok",
+        "success": true
+    }

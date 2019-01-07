@@ -5,7 +5,7 @@ DEFUALT_ENDPOINT = 'http://data_server.rcrai.com/'
 
 
 class DealTapeClient(object):
-    
+
     def __init__(self, business, access_key_id="", access_key_secret="", endpoint=None):
         if not endpoint:
             self.endpoint = DEFUALT_ENDPOINT
@@ -48,4 +48,8 @@ class DealTapeClient(object):
             "secret": self.access_key_secret,
             "source_ids": source_ids
         })
+        return resp
+
+    def create_dealinfo(self, data):
+        resp = requests.post(self.endpoint + "%s/dealinfo" % self.business, json=data)
         return resp
