@@ -235,7 +235,8 @@ http://data_server.rcrai.com/{business_key}/transcript
                 ]
                 "status": "SUCCESS"
             },
-        }
+        },
+        "success": true
 	}
 
 
@@ -319,6 +320,7 @@ http://data_server.rcrai.com/{business_key}/semantic
 	            "status": "SUCCESS"
 	        }
 	    ],
+	    "success": true
 	}
 
 

@@ -86,9 +86,9 @@ DealTape数据SDK
         
     # 返回值
     {
-	    "failed_unique_ids": [],  # 失败的unique_id列表
+	    "failed_ids": [],  # 失败的unique_id列表
 	    "status": "OK",
-	    "success_unique_ids": [  # 成功的unique_id列表
+	    "succeed_ids": [  # 成功的unique_id列表
 	        "42221378094341301536649453",
 	        "42221378094263871536647253"
 	    ]
